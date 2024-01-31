@@ -1,0 +1,63 @@
+body {
+  background-color: #0a0a23
+}
+
+#text {
+  background-color: #0a0a23;
+  color: #ffffff;
+  padding: 10px;
+}
+
+#game {
+  max-width: 500px;
+  max-height: 400px;
+  background-color: #ffffff;
+  color: #ffffff;
+  margin-top: 30px;
+  margin-bottom: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+}
+
+/*Usando una lista de selectores (selector1, selector2) proporcione sus #controles y #estadísticas
+elementos un borde de 1px sólido #0a0a23, un color de texto #0a0a23 y 5px de relleno.
+*/
+
+#controls,
+#stats {
+  border: 1px solid #0a0a23;
+  color: #0a0a23;
+  padding: 5px;
+
+}
+
+/*Dale a tu elemento #monsterStats el mismo borde y relleno que tu
+Elemento #estadísticas. Establece su color en #ffffff y dale un fondo #c70d0d.*/
+
+#monsterStats {
+  border: 1px solid #0a0a23;
+  padding: 5px;
+  color: #ffffff;
+  background-color: #c70d0d;
+  display: none;
+}
+
+/*A continuación, dé a sus elementos .stat un padding-right de 10px.*/
+.stat {
+  padding-right: 10px;
+}
+
+/*Finalmente, necesitarás añadir algunos estilos para tus botones. 
+Empieza por establecer la propiedad cursor en puntero. Luego establece 
+el color del texto a #0a0a23 y el color de fondo a #feac32.
+A continuación, establece la propiedad background-image en linear-gradient(#fecc4c, #ffac33). 
+Por último, establece el borde a 3px solid #feac32. */ 
+
+button{
+  cursor: pointer;
+  color: #0a0a23;
+  background-color: #feac32;
+  background-image: linear-gradient(#fecc4c,#ffac33);
+  border: 3px solid #feac32;
+}
