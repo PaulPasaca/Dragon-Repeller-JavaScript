@@ -43,6 +43,7 @@ Elemento #estadísticas. Establece su color en #ffffff y dale un fondo #c70d0d.*
   display: none;
 }
 
+
 /*A continuación, dé a sus elementos .stat un padding-right de 10px.*/
 .stat {
   padding-right: 10px;
@@ -61,3 +62,4 @@ button{
   background-image: linear-gradient(#fecc4c,#ffac33);
   border: 3px solid #feac32;
 }
+
