@@ -86,6 +86,12 @@ const locations = [
     "button functions": [restart, restart, restart],
     text: "You defeat the dragon! YOU WIN THE GAME! 🎉"
   },
+  {
+    name: "easter egg",
+    "button text": ["2", "8", "Go to town square?"],
+    "button functions": [pickTwo, pickEight, goTown],
+    text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!"
+  }
 ];
 
 /*En JavaScript se puede acceder a las propiedades de dos maneras diferentes. 
@@ -102,7 +108,7 @@ info.innerText = "Hello World";
 */
 
 function update(location) {
-  monsterStats.style.display = 'none';
+  monsterStats.style.display = "none";
   button1.innerText = location["button text"][0];
   button2.innerText = location["button text"][1];
   button3.innerText = location["button text"][2];
@@ -111,7 +117,6 @@ function update(location) {
   button3.onclick = location["button functions"][2];
   text.innerText = location.text;
 }
-
 
 function goTown() {
   update(locations[0]);
@@ -124,7 +129,6 @@ function goStore() {
 function goCave() {
   update(locations[2]);
 }
-
 
 function buyHealth() {
   if (gold >= 10) {
@@ -158,7 +162,6 @@ function buyWeapon() {
 }
 
 
-
 function sellWeapon() {
   if (inventory.length > 1) {
     gold += 15;
@@ -170,8 +173,6 @@ function sellWeapon() {
     text.innerText = "Don't sell your only weapon!";
   }
 }
-
-
 
 function fightSlime() {
   fighting = 0;
@@ -189,10 +190,11 @@ function fightDragon() {
 }
 
 
+
 function goFight() {
   update(locations[3]);
   monsterHealth = monsters[fighting].health;
-  monsterStats.style.display = 'block';
+  monsterStats.style.display = "block";
   /*Ahora, establece la propiedad innerText de monsterName para que sea la 
   propiedad name del monstruo actual.Haz lo mismo para monsterHealthText y 
   la propiedad health.*/
@@ -202,10 +204,15 @@ function goFight() {
 }
 
 function attack() {
+
   text.innerText = "The " + monsters[fighting].name + " attacks.";
   text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
   health -= getMonsterAttackValue(monsters[fighting].level);
-  monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
+  if (isMonsterHit()) {
+    monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
+  } else {
+    text.innerText += " You miss.";
+  }
   healthText.innerText = health;
   monsterHealthText.innerText = monsterHealth;
   if (health <= 0) {
@@ -216,6 +223,10 @@ function attack() {
     } else {
       defeatMonster();
     }
+  }
+  if (Math.random() <= .1 && inventory.length !== 1) {
+    text.innerText += " Your " + inventory.pop() + " breaks.";
+    currentWeapon--;
   }
 }
 
@@ -229,12 +240,13 @@ function getMonsterAttackValue(level) {
   /* El operador ternario es un operador condicional y puede utilizarse como 
   una sentencia if-else de una sola línea. 
   La sintaxis es: condición ? expresiónIfTrue : expresiónIfFalse. */
-  return hit > 0 ? hit : 0
+  return hit > 0 ? hit : 0;
 
 }
 
-
-
+function isMonsterHit() {
+  return Math.random() > .2 || health < 20;
+}
 
 function dodge() {
   text.innerText = "You dodge the attack from the " + monsters[fighting].name;
@@ -262,9 +274,45 @@ function restart() {
   health = 100;
   gold = 50;
   currentWeapon = 0;
-  inventory = ["stick"]
+  inventory = ["stick"];
   goldText.innerText = gold;
   healthText.innerText = health;
   xpText.innerText = xp;
   goTown();
+}
+
+
+function easterEgg() {
+  update(locations[7]);
+}
+
+function pickTwo() {
+  pick(2);
+}
+
+function pickEight() {
+  pick(8);
+}
+
+function pick(guess) {
+  const numbers = [];
+  while (numbers.length < 10) {
+    numbers.push(Math.floor(Math.random() * 11));
+  }
+  text.innerText = "You picked " + guess + ". Here are the random numbers:\n";
+  for (let i = 0; i < 10; i++) {
+    text.innerText += numbers[i] + "\n";
+  }
+  if (numbers.includes(guess)) {
+    text.innerText += "Right! You win 20 gold!";
+    gold += 20;
+    goldText.innerText = gold;
+  } else {
+    text.innerText += "Wrong! You lose 10 health!";
+    health -= 10;
+    healthText.innerText = health;
+    if (health <= 0) {
+      lose();
+    }
+  }
 }
