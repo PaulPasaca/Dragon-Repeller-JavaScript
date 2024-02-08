@@ -1,5 +1,8 @@
 # Juego-Rol-JavaScript usando JavaScript, HTML y CSS
 # Hola, Soy cricketdev! 👋
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/paul-alexander-pasaca-1a3b2b297)
+[![instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/paul_alex_p/)
+
 Para la ejecucion de este proyecto se debe tomar en cuenta ciertos parámetros para evitar posibles errores, los cuales se describen a continuación:  
 
 + 👩‍💻 Primeramente inicializa la app en el archivo settings.py
@@ -60,5 +63,7 @@ urlpatterns = [
     <script src="{% static '/js/script.js' %} "></script>
 
 ```
-
-
+## 🚀 Tecnologías
+[![JAVASCRIPT](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)]()
+[![HMTL5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)]()
+[![DJANGO](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green)]()
